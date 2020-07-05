@@ -1,0 +1,42 @@
+---
+title: "coursera"
+author: "JOSE BAEZA DIAZ"
+date: "04-07-2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+makeCacheMatrix <- function(x = matrix()) {
+	  k <- NULL
+	  set <- function(y){
+	      x <<- y
+	      k <<- NULL
+	}
+	get <- function() x 
+	setInverse <- function(solvematrix) k <<- solvematrix
+	getInverse <- function() k
+	list(set = set, get = get, setInverse = setInverse, getInverse= getInverse)
+	}
+	
+	
+	## Write a short comment describing this function
+	
+	cacheSolve <- function(x, ...) {
+	        ## Return a matrix that is the inverse of 'x'
+	  k <- x$getInverse()
+	  if (!is.null(k)){
+	    message("Getting cached data")
+	    return(k)
+	  }
+	  data < x$get()
+	  k <- solve(data)
+	  x$setInverse(k)
+	  k
+	}
+```
+
